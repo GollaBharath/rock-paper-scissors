@@ -26,7 +26,7 @@ function PlayRound(comp,player){
     if (comp===player) {
         return "Its a tie!!!"
     }
-    if (comp === "rock" && player === "paper" || comp === "paper" && player === "scissors"){
+    if (comp === "rock" && player === "paper" || comp === "paper" && player === "scissors" || comp === "scissors" && player === "rock") {
         HumanScore++
         return "You Win!!!"
     }
