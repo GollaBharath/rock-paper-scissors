@@ -50,7 +50,9 @@ function Game() {
 Game()
 if (HumanScore > ComputerScore) {
     console.log("Match Result : You Won!!!")
+    console.log("Computer Score : "+ComputerScore)
 }
 else {
     console.log("Match Result : You Lose!!!")
+    console.log("Your Score : "+HumanScore)
 }
