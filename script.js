@@ -14,45 +14,51 @@ function GetComputerChoice(){
     }
 }
 
-function GetPlayerChoice(){
-    let choice = prompt("Enter your choice : Rock/Paper/Scissors ")
-    if (choice === "Quit"){
-        process.exit()
-    }
-    return choice.toLowerCase()
-}
-
-function PlayRound(comp,player){
+function PlayRound(player) {
+    let comp = GetComputerChoice()
     if (comp===player) {
-        return "Its a tie!!!"
+        console.log("Its a tie!!!")
+        DisplayResult("Its a tie!!!")
     }
-    if (comp === "rock" && player === "paper" || comp === "paper" && player === "scissors" || comp === "scissors" && player === "rock") {
+    else if (comp === "rock" && player === "paper" || comp === "paper" && player === "scissors" || comp === "scissors" && player === "rock") {
+        console.log("You Win!!!")
+        DisplayResult("You Win!!!")
         HumanScore++
-        return "You Win!!!"
     }
     else {
+        console.log("You Lose!!!")
+        DisplayResult("You Lose!!!")
         ComputerScore++
-        return "You Lose!!!"
+    }
+    DisplayPlayerScore("Your Score : " + HumanScore)
+    DisplayComputerScore("Computer Score : " + ComputerScore)
+    if (HumanScore >= 5) {
+        alert("Congratulations! You beat the system 🥳")
+        HumanScore = 0
+        ComputerScore = 0
+        DisplayPlayerScore("Your Score : " + HumanScore)
+        DisplayComputerScore("Computer Score : " + ComputerScore)
+    }
+    else if (ComputerScore >= 5) {
+        alert("You got bested by this bot 😮‍💨. Wanna try again?")
+        HumanScore = 0
+        ComputerScore = 0
+        DisplayPlayerScore("Your Score : " + HumanScore)
+        DisplayComputerScore("Computer Score : " + ComputerScore)
     }
 }
 
-function Game() {
-    while (HumanScore < 5 && ComputerScore < 5) {
-        let comp = GetComputerChoice()
-        let choice = GetPlayerChoice()
-        console.log("Computer Played :"+comp)
-        console.log("You Played : "+choice)
-        let result = PlayRound(comp,choice)
-        console.log("Round Result : " + result)
-    }
+function DisplayResult(text) {
+    let display_text = document.getElementById("Text")
+    display_text.textContent = text
 }
 
-Game()
-if (HumanScore > ComputerScore) {
-    console.log("Match Result : You Won!!!")
-    console.log("Computer Score : "+ComputerScore)
+function DisplayPlayerScore(text) {
+    let display_text = document.getElementById("playerScore")
+    display_text.textContent = text
 }
-else {
-    console.log("Match Result : You Lose!!!")
-    console.log("Your Score : "+HumanScore)
+
+function DisplayComputerScore(text) {
+    let display_text = document.getElementById("computerScore")
+    display_text.textContent = text
 }
