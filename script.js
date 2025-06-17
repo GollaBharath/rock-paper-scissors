@@ -4,30 +4,27 @@ let ComputerScore = 0
 function GetComputerChoice(){
     let a = Math.random()*100
     if (a<33.33) {
-        return "paper"
+        return "Paper"
     }
     else if (a>66.66){
-        return "rock"
+        return "Rock"
     }
     else {
-        return "scissors"
+        return "Scissors"
     }
 }
 
 function PlayRound(player) {
     let comp = GetComputerChoice()
     if (comp===player) {
-        console.log("Its a tie!!!")
-        DisplayResult("Its a tie!!!")
+        DisplayResult(`You both played ${player}. Its a tie!!!`)
     }
-    else if (comp === "rock" && player === "paper" || comp === "paper" && player === "scissors" || comp === "scissors" && player === "rock") {
-        console.log("You Win!!!")
-        DisplayResult("You Win!!!")
+    else if (comp === "Rock" && player === "Paper" || comp === "Paper" && player === "Scissors" || comp === "Scissors" && player === "Rock") {
+        DisplayResult(`${player} beats ${comp}. You Win!!!`)
         HumanScore++
     }
     else {
-        console.log("You Lose!!!")
-        DisplayResult("You Lose!!!")
+        DisplayResult(`${comp} beats ${player}. You Lose!!!`)
         ComputerScore++
     }
     DisplayPlayerScore("Your Score : " + HumanScore)
@@ -38,6 +35,7 @@ function PlayRound(player) {
         ComputerScore = 0
         DisplayPlayerScore("Your Score : " + HumanScore)
         DisplayComputerScore("Computer Score : " + ComputerScore)
+        DisplayResult("Press a button :)")
     }
     else if (ComputerScore >= 5) {
         alert("You got bested by this bot 😮‍💨. Wanna try again?")
@@ -45,6 +43,7 @@ function PlayRound(player) {
         ComputerScore = 0
         DisplayPlayerScore("Your Score : " + HumanScore)
         DisplayComputerScore("Computer Score : " + ComputerScore)
+        DisplayResult("Press a button :)")
     }
 }
 
